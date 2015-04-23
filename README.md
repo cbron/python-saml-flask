@@ -31,12 +31,12 @@ It is not an official extension, but acts just like one.
       pass
     ```
 
-4. Add settings:
+4. Add settings and certs:
 
     * `SAML_SETTINGS_PATH` - String - Optional
-      * otherwise renders 'saml_logout_successful.html' template
+      * otherwise renders `saml_logout_successful.html` template
     * `SAML_LOGOUT_PATH` - STRING, - Required
-      * path to a 'saml' folder which has:
+      * path to a folder named saml which has:
         * settings.json
         * advanced_settings.json
         * a folder named 'certs' with all certs/keys
