@@ -1,12 +1,8 @@
-import os
 from flask import session, make_response, request, redirect, jsonify, render_template, current_app
-from flask.ext.login import login_user, logout_user
+from flask.ext.login import logout_user
 from flask.views import View
 from onelogin.saml2.auth import OneLogin_Saml2_Auth
 from urlparse import urlparse
-from app.models import User
-
-# See readme.md for setting this up in different apps
 
 ####
 # Extension Manager
