@@ -18,12 +18,12 @@ It is not an official extension, but acts just like one.
 
     #setup flask-login
     login_manager = LoginManager()
-    login_manager.init_app(flask_app)
+    login_manager.init_app(app)
     login_manager.login_view = '/saml/login'
 
     #setup saml manager
     saml_manager = SamlManager()
-    saml_manager.init_app(flask_app)
+    saml_manager.init_app(app)
     @saml_manager.login_from_acs
     def acs_login(acs):
       # define login logic here depending on idp response
@@ -31,8 +31,7 @@ It is not an official extension, but acts just like one.
       pass
     ```
 
-4. Define `acs_login`
-5. Add settings:
+4. Add settings:
 
     * `SAML_SETTINGS_PATH` - String - Optional
       * otherwise renders 'saml_logout_successful.html' template
@@ -42,7 +41,7 @@ It is not an official extension, but acts just like one.
         * advanced_settings.json
         * a folder named 'certs' with all certs/keys
 
-6. Create Metadata and trade with IDP
+5. Create Metadata and trade with IDP
 
     ```
     from lib.saml import SamlRequest
@@ -53,7 +52,8 @@ It is not an official extension, but acts just like one.
       return saml.generate_metadata()
     ```
 
-7. Work with your IDP to finalize everything and test it out.
+6. Define `acs_login`. The data you get back will depend on your IDP, so throw a debugger in there to see what was passed in.
+7. It should now work, you'll have to communicate with your IDP to finalize everything.
 
 
 ## Contributing
